@@ -1,0 +1,12 @@
+D:\Graduation Project\Smart_Blind_System\BlindSystem.Domain\bin\Debug\net8.0\BlindSystem.Domain.deps.json
+D:\Graduation Project\Smart_Blind_System\BlindSystem.Domain\bin\Debug\net8.0\BlindSystem.Domain.dll
+D:\Graduation Project\Smart_Blind_System\BlindSystem.Domain\bin\Debug\net8.0\BlindSystem.Domain.pdb
+D:\Graduation Project\Smart_Blind_System\BlindSystem.Domain\obj\Debug\net8.0\BlindSystem.Domain.csproj.AssemblyReference.cache
+D:\Graduation Project\Smart_Blind_System\BlindSystem.Domain\obj\Debug\net8.0\BlindSystem.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Graduation Project\Smart_Blind_System\BlindSystem.Domain\obj\Debug\net8.0\BlindSystem.Domain.AssemblyInfoInputs.cache
+D:\Graduation Project\Smart_Blind_System\BlindSystem.Domain\obj\Debug\net8.0\BlindSystem.Domain.AssemblyInfo.cs
+D:\Graduation Project\Smart_Blind_System\BlindSystem.Domain\obj\Debug\net8.0\BlindSystem.Domain.csproj.CoreCompileInputs.cache
+D:\Graduation Project\Smart_Blind_System\BlindSystem.Domain\obj\Debug\net8.0\BlindSystem.Domain.dll
+D:\Graduation Project\Smart_Blind_System\BlindSystem.Domain\obj\Debug\net8.0\refint\BlindSystem.Domain.dll
+D:\Graduation Project\Smart_Blind_System\BlindSystem.Domain\obj\Debug\net8.0\BlindSystem.Domain.pdb
+D:\Graduation Project\Smart_Blind_System\BlindSystem.Domain\obj\Debug\net8.0\ref\BlindSystem.Domain.dll

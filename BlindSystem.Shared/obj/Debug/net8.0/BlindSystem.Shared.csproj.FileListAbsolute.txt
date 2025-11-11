@@ -1,0 +1,11 @@
+D:\Graduation Project\Smart_Blind_System\BlindSystem.Shared\bin\Debug\net8.0\BlindSystem.Shared.deps.json
+D:\Graduation Project\Smart_Blind_System\BlindSystem.Shared\bin\Debug\net8.0\BlindSystem.Shared.dll
+D:\Graduation Project\Smart_Blind_System\BlindSystem.Shared\bin\Debug\net8.0\BlindSystem.Shared.pdb
+D:\Graduation Project\Smart_Blind_System\BlindSystem.Shared\obj\Debug\net8.0\BlindSystem.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\Graduation Project\Smart_Blind_System\BlindSystem.Shared\obj\Debug\net8.0\BlindSystem.Shared.AssemblyInfoInputs.cache
+D:\Graduation Project\Smart_Blind_System\BlindSystem.Shared\obj\Debug\net8.0\BlindSystem.Shared.AssemblyInfo.cs
+D:\Graduation Project\Smart_Blind_System\BlindSystem.Shared\obj\Debug\net8.0\BlindSystem.Shared.csproj.CoreCompileInputs.cache
+D:\Graduation Project\Smart_Blind_System\BlindSystem.Shared\obj\Debug\net8.0\BlindSystem.Shared.dll
+D:\Graduation Project\Smart_Blind_System\BlindSystem.Shared\obj\Debug\net8.0\refint\BlindSystem.Shared.dll
+D:\Graduation Project\Smart_Blind_System\BlindSystem.Shared\obj\Debug\net8.0\BlindSystem.Shared.pdb
+D:\Graduation Project\Smart_Blind_System\BlindSystem.Shared\obj\Debug\net8.0\ref\BlindSystem.Shared.dll

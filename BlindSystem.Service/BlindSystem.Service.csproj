@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Folder Include="Mapping\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\BlindSystem.Domain\BlindSystem.Domain.csproj" />
+		<ProjectReference Include="..\BlindSystem.Identities\BlindSystem.Identities.csproj" />
+		<ProjectReference Include="..\BlindSystem.Infrastructure\BlindSystem.Infrastructure.csproj" />
+		<ProjectReference Include="..\BlindSystem.Shared\BlindSystem.Shared.csproj" />
+
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart_Blind_System.API", "Smart_Blind_System.API.csproj", "{0E79EECE-0EE3-446B-95C3-5E60F1FB6DB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlindSystem.Domain", "..\BlindSystem.Domain\BlindSystem.Domain.csproj", "{64518E93-41F6-48CE-BF8A-37A984B312D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlindSystem.Service", "..\BlindSystem.Service\BlindSystem.Service.csproj", "{7A41C941-FF57-40D9-A7E4-533A201EBC3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlindSystem.Infrastructure", "..\BlindSystem.Infrastructure\BlindSystem.Infrastructure.csproj", "{E71EBDB7-D1D8-4ED1-B777-C2F13F450C3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlindSystem.Identities", "..\BlindSystem.Identities\BlindSystem.Identities.csproj", "{5DDA584A-12C5-41E7-BBF8-CA59B9DEB670}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlindSystem.Shared", "..\BlindSystem.Shared\BlindSystem.Shared.csproj", "{5FBDE8DE-CF28-46E5-89C9-C4A0282ADD09}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E79EECE-0EE3-446B-95C3-5E60F1FB6DB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E79EECE-0EE3-446B-95C3-5E60F1FB6DB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E79EECE-0EE3-446B-95C3-5E60F1FB6DB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E79EECE-0EE3-446B-95C3-5E60F1FB6DB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64518E93-41F6-48CE-BF8A-37A984B312D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64518E93-41F6-48CE-BF8A-37A984B312D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64518E93-41F6-48CE-BF8A-37A984B312D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64518E93-41F6-48CE-BF8A-37A984B312D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A41C941-FF57-40D9-A7E4-533A201EBC3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A41C941-FF57-40D9-A7E4-533A201EBC3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A41C941-FF57-40D9-A7E4-533A201EBC3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A41C941-FF57-40D9-A7E4-533A201EBC3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E71EBDB7-D1D8-4ED1-B777-C2F13F450C3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E71EBDB7-D1D8-4ED1-B777-C2F13F450C3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E71EBDB7-D1D8-4ED1-B777-C2F13F450C3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E71EBDB7-D1D8-4ED1-B777-C2F13F450C3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DDA584A-12C5-41E7-BBF8-CA59B9DEB670}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DDA584A-12C5-41E7-BBF8-CA59B9DEB670}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DDA584A-12C5-41E7-BBF8-CA59B9DEB670}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DDA584A-12C5-41E7-BBF8-CA59B9DEB670}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FBDE8DE-CF28-46E5-89C9-C4A0282ADD09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FBDE8DE-CF28-46E5-89C9-C4A0282ADD09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FBDE8DE-CF28-46E5-89C9-C4A0282ADD09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FBDE8DE-CF28-46E5-89C9-C4A0282ADD09}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D2C43642-68A2-4621-BCAB-9337F69ED259}
+	EndGlobalSection
+EndGlobal

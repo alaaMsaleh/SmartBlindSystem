@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.21" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.20">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.20" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Extensions\" />
+		<Folder Include="Middleware\" />
+		<Folder Include="Error\" />
+		<Folder Include="Helpers\" />
+		<Folder Include="wwwroot\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\BlindSystem.Domain\BlindSystem.Domain.csproj" />
+		<ProjectReference Include="..\BlindSystem.Identities\BlindSystem.Identities.csproj" />
+		<ProjectReference Include="..\BlindSystem.Infrastructure\BlindSystem.Infrastructure.csproj" />
+		<ProjectReference Include="..\BlindSystem.Service\BlindSystem.Service.csproj" />
+		<ProjectReference Include="..\BlindSystem.Shared\BlindSystem.Shared.csproj" />
+
+	</ItemGroup>
+
+</Project>
