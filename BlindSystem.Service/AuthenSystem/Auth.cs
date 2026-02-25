@@ -1,4 +1,4 @@
-﻿using BlindSystem.Identities.Identity;
+﻿using BlindSystem.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -24,8 +24,9 @@ namespace BlindSystem.Service.AuthenSystem
             //create Claims 
             var AuthClaim = new List<Claim>()
             {
+                new Claim(ClaimTypes.NameIdentifier, user.Id),
                 new Claim(ClaimTypes.Name, user.DisplayName),
-                new Claim(ClaimTypes.Email,user.EmailAddress)
+                new Claim(ClaimTypes.Email,user.Email)
             };
 
             var userRole = await userManager.GetRolesAsync(user);

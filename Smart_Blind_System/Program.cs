@@ -1,12 +1,8 @@
 
 
-using BlindSystem.Domain.Interfaces.IDevicesRepo;
-using BlindSystem.Identities.IdentitiesDbContext;
-using BlindSystem.Identities.Identity;
+using BlindSystem.Domain.Entities;
 using BlindSystem.Infrastructure.Data.DBContext;
-using BlindSystem.Infrastructure.Repositories.DivcesRepo;
-using BlindSystem.Service.Interfaces;
-using BlindSystem.Service.Services;
+
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -29,13 +25,11 @@ namespace Smart_Blind_System
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddScoped<IDevicesRepository, DeviceRepository>();
 
-            builder.Services.AddScoped<IDeviceServices, DeviceService>();
 
 
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-              .AddEntityFrameworkStores<ApplictionIdentityDbContext>()
+              .AddEntityFrameworkStores<BlindSystemDbContext>()
               .AddDefaultTokenProviders();
 
 
@@ -77,11 +71,6 @@ namespace Smart_Blind_System
             });
 
             //Identity DataBase 
-
-            builder.Services.AddDbContext<ApplictionIdentityDbContext>(options =>
-            {
-                options.UseSqlServer(builder.Configuration.GetConnectionString("IdentityConnection"));
-            });
 
 
             #endregion

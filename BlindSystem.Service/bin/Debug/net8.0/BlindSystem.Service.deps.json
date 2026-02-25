@@ -9,9 +9,7 @@
       "BlindSystem.Service/1.0.0": {
         "dependencies": {
           "BlindSystem.Domain": "1.0.0",
-          "BlindSystem.Identities": "1.0.0",
-          "BlindSystem.Infrastructure": "1.0.0",
-          "BlindSystem.Shared": "1.0.0"
+          "BlindSystem.Infrastructure": "1.0.0"
         },
         "runtime": {
           "BlindSystem.Service.dll": {}
@@ -629,7 +627,7 @@
       },
       "BlindSystem.Domain/1.0.0": {
         "dependencies": {
-          "Microsoft.Extensions.Identity.Core": "8.0.20"
+          "Microsoft.Extensions.Identity.Stores": "8.0.20"
         },
         "runtime": {
           "BlindSystem.Domain.dll": {
@@ -638,36 +636,15 @@
           }
         }
       },
-      "BlindSystem.Identities/1.0.0": {
-        "dependencies": {
-          "BlindSystem.Domain": "1.0.0",
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.20"
-        },
-        "runtime": {
-          "BlindSystem.Identities.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
       "BlindSystem.Infrastructure/1.0.0": {
         "dependencies": {
           "BlindSystem.Domain": "1.0.0",
-          "BlindSystem.Identities": "1.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.20",
           "Microsoft.EntityFrameworkCore": "8.0.20",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.20"
         },
         "runtime": {
           "BlindSystem.Infrastructure.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "BlindSystem.Shared/1.0.0": {
-        "runtime": {
-          "BlindSystem.Shared.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -1106,17 +1083,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "BlindSystem.Identities/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
     "BlindSystem.Infrastructure/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "BlindSystem.Shared/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

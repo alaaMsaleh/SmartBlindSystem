@@ -22,7 +22,10 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\BlindSystem.Domain\BlindSystem.Domain.csproj" />
-		<ProjectReference Include="..\BlindSystem.Identities\BlindSystem.Identities.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Repositories\" />
 	</ItemGroup>
 
 </Project>

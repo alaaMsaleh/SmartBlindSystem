@@ -1072,27 +1072,13 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Microsoft.Extensions.Identity.Core": "8.0.20"
+          "Microsoft.Extensions.Identity.Stores": "8.0.0"
         },
         "compile": {
           "bin/placeholder/BlindSystem.Domain.dll": {}
         },
         "runtime": {
           "bin/placeholder/BlindSystem.Domain.dll": {}
-        }
-      },
-      "BlindSystem.Identities/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "BlindSystem.Domain": "1.0.0",
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.20"
-        },
-        "compile": {
-          "bin/placeholder/BlindSystem.Identities.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/BlindSystem.Identities.dll": {}
         }
       },
       "BlindSystem.Infrastructure/1.0.0": {
@@ -1100,7 +1086,6 @@
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "BlindSystem.Domain": "1.0.0",
-          "BlindSystem.Identities": "1.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.20",
           "Microsoft.EntityFrameworkCore": "8.0.20",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.20"
@@ -1110,16 +1095,6 @@
         },
         "runtime": {
           "bin/placeholder/BlindSystem.Infrastructure.dll": {}
-        }
-      },
-      "BlindSystem.Shared/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "compile": {
-          "bin/placeholder/BlindSystem.Shared.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/BlindSystem.Shared.dll": {}
         }
       }
     }
@@ -2939,28 +2914,16 @@
       "path": "../BlindSystem.Domain/BlindSystem.Domain.csproj",
       "msbuildProject": "../BlindSystem.Domain/BlindSystem.Domain.csproj"
     },
-    "BlindSystem.Identities/1.0.0": {
-      "type": "project",
-      "path": "../BlindSystem.Identities/BlindSystem.Identities.csproj",
-      "msbuildProject": "../BlindSystem.Identities/BlindSystem.Identities.csproj"
-    },
     "BlindSystem.Infrastructure/1.0.0": {
       "type": "project",
       "path": "../BlindSystem.Infrastructure/BlindSystem.Infrastructure.csproj",
       "msbuildProject": "../BlindSystem.Infrastructure/BlindSystem.Infrastructure.csproj"
-    },
-    "BlindSystem.Shared/1.0.0": {
-      "type": "project",
-      "path": "../BlindSystem.Shared/BlindSystem.Shared.csproj",
-      "msbuildProject": "../BlindSystem.Shared/BlindSystem.Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "BlindSystem.Domain >= 1.0.0",
-      "BlindSystem.Identities >= 1.0.0",
-      "BlindSystem.Infrastructure >= 1.0.0",
-      "BlindSystem.Shared >= 1.0.0"
+      "BlindSystem.Infrastructure >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2998,14 +2961,8 @@
             "D:\\Graduation Project\\Smart_Blind_System\\BlindSystem.Domain\\BlindSystem.Domain.csproj": {
               "projectPath": "D:\\Graduation Project\\Smart_Blind_System\\BlindSystem.Domain\\BlindSystem.Domain.csproj"
             },
-            "D:\\Graduation Project\\Smart_Blind_System\\BlindSystem.Identities\\BlindSystem.Identities.csproj": {
-              "projectPath": "D:\\Graduation Project\\Smart_Blind_System\\BlindSystem.Identities\\BlindSystem.Identities.csproj"
-            },
             "D:\\Graduation Project\\Smart_Blind_System\\BlindSystem.Infrastructure\\BlindSystem.Infrastructure.csproj": {
               "projectPath": "D:\\Graduation Project\\Smart_Blind_System\\BlindSystem.Infrastructure\\BlindSystem.Infrastructure.csproj"
-            },
-            "D:\\Graduation Project\\Smart_Blind_System\\BlindSystem.Shared\\BlindSystem.Shared.csproj": {
-              "projectPath": "D:\\Graduation Project\\Smart_Blind_System\\BlindSystem.Shared\\BlindSystem.Shared.csproj"
             }
           }
         }

@@ -1,4 +1,4 @@
-﻿using BlindSystem.Identities.Identity;
+﻿using BlindSystem.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 
 namespace BlindSystem.Service.AuthenSystem

@@ -26,10 +26,8 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\BlindSystem.Domain\BlindSystem.Domain.csproj" />
-		<ProjectReference Include="..\BlindSystem.Identities\BlindSystem.Identities.csproj" />
 		<ProjectReference Include="..\BlindSystem.Infrastructure\BlindSystem.Infrastructure.csproj" />
 		<ProjectReference Include="..\BlindSystem.Service\BlindSystem.Service.csproj" />
-		<ProjectReference Include="..\BlindSystem.Shared\BlindSystem.Shared.csproj" />
 
 	</ItemGroup>
 

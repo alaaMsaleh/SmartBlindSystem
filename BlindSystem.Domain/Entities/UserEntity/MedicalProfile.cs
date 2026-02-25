@@ -13,7 +13,7 @@
 
         public string DrPhone { get; set; } = string.Empty;
 
-        public int UserId { get; set; }
-        public UserProfile UserProfile { get; set; } //Navigation Property
+        public string UserId { get; set; }
+        public ApplicationUser User { get; set; } //Navigation Property
     }
 }

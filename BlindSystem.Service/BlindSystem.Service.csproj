@@ -7,14 +7,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Folder Include="Interfaces\" />
 		<Folder Include="Mapping\" />
+		<Folder Include="Services\" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\BlindSystem.Domain\BlindSystem.Domain.csproj" />
-		<ProjectReference Include="..\BlindSystem.Identities\BlindSystem.Identities.csproj" />
 		<ProjectReference Include="..\BlindSystem.Infrastructure\BlindSystem.Infrastructure.csproj" />
-		<ProjectReference Include="..\BlindSystem.Shared\BlindSystem.Shared.csproj" />
 
 	</ItemGroup>
 

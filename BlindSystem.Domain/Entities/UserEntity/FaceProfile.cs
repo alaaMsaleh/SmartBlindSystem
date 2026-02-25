@@ -4,7 +4,7 @@
     {
         public Guid Id { get; set; }
 
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
         public string Name { get; set; }
 
@@ -17,6 +17,6 @@
 
         public DateTime AddedAt { get; set; }
 
-        public UserProfile userProfile { get; set; }
+        public ApplicationUser User { get; set; }
     }
 }

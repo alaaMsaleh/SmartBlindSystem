@@ -1,4 +1,4 @@
-﻿using BlindSystem.Identities.Identity;
+﻿using BlindSystem.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Smart_Blind_System.API.DTOs.IdentityUser;
