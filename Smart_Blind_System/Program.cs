@@ -2,7 +2,7 @@
 
 using BlindSystem.Domain.Entities;
 using BlindSystem.Infrastructure.Data.DBContext;
-
+using BlindSystem.Service.AuthenSystem;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +25,7 @@ namespace Smart_Blind_System
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddScoped(typeof(IAuth), typeof(Auth));
 
 
 

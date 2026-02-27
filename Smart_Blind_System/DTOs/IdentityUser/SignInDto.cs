@@ -2,7 +2,7 @@
 
 namespace Smart_Blind_System.API.DTOs.IdentityUser
 {
-    public class SiginDto
+    public class SignInDto
     {
         [Required]
         [EmailAddress]

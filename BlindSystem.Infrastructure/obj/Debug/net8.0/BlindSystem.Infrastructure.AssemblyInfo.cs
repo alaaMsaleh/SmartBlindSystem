@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BlindSystem.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4a79a2e8be772b999b3b477d30d7d2b5d2cbe5bc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+95f1f97821fbb93766e260b009c34aefd2c41498")]
 [assembly: System.Reflection.AssemblyProductAttribute("BlindSystem.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BlindSystem.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

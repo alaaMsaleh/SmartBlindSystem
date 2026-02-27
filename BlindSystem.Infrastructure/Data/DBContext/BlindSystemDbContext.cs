@@ -1,4 +1,5 @@
 ﻿using BlindSystem.Domain.Entities;
+using BlindSystem.Domain.Entities.ActionEntity;
 using BlindSystem.Domain.Entities.DevicesEntities;
 using BlindSystem.Domain.Entities.UserEntity;
 using BlindSystem.Infrastructure.Configuration;
@@ -28,6 +29,9 @@ namespace BlindSystem.Infrastructure.Data.DBContext
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration(new ApplicatopnUserConfiguration());
 
+            //to Make GeoLocation Owned
+            modelBuilder.Entity<Alert>().OwnsOne(e => e.Location);
+
         }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<FaceProfile> FacesProfile { get; set; }
@@ -37,6 +41,8 @@ namespace BlindSystem.Infrastructure.Data.DBContext
         public DbSet<SmartBracelet> SmartBracelets { get; set; }
         public DbSet<SmartGlass> SmartGlass { get; set; }
         public DbSet<SmartStick> SmartStick { get; set; }
+        public DbSet<Alert> Alerts { get; set; }
+
 
     }
 }

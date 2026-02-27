@@ -1,4 +1,5 @@
 ﻿using BlindSystem.Domain.Entities;
+using BlindSystem.Service.AuthenSystem;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Smart_Blind_System.API.DTOs.IdentityUser;
@@ -11,12 +12,13 @@ namespace Smart_Blind_System.API.Controllers.Identity
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly IAuth _auth;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IAuth auth)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-
+            _auth = auth;
         }
 
         //Create Registeration
@@ -46,9 +48,13 @@ namespace Smart_Blind_System.API.Controllers.Identity
 
             var User = new ApplicationUser
             {
-                DisplayName = userDto.DisplayName,
+                FullName = userDto.FullName,
+                DisplayName = userDto.FullName,
                 Email = userDto.Email,
                 UserName = userDto.Email.Split("@")[0],
+                PhoneNumber = userDto.PhoneNumber,
+                Gender = userDto.Gender
+
 
             };
 
@@ -60,35 +66,36 @@ namespace Smart_Blind_System.API.Controllers.Identity
 
             return Ok(new UserDto()
             {
-                DispalyName = User.DisplayName,
+                FullName = User.DisplayName,
                 Email = userDto.Email,
-                Token = "Jwt-Token "
+                Token = await _auth.CreateToken(User, _userManager)
+
 
             });
         }
 
 
-        [HttpPost("sigin")]
-        public async Task<ActionResult<UserDto>> Sigin(SiginDto sigin)
+        [HttpPost("signin")]
+        public async Task<ActionResult<UserDto>> SignIn(SignInDto SignIn)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
 
-            var user = await _userManager.FindByEmailAsync(sigin.Email);
+            var user = await _userManager.FindByEmailAsync(SignIn.Email);
             if (user == null) return BadRequest(new { message = "This userEmail notFound" });
 
-            var userPassword = await _signInManager.CheckPasswordSignInAsync(user, sigin.Password, false);
+            var userPassword = await _signInManager.CheckPasswordSignInAsync(user, SignIn.Password, false);
 
-            if (userPassword == null) return BadRequest(new { message = " unCorrect Password" });
+            if (!userPassword.Succeeded) return BadRequest(new { message = " unCorrect Password" });
 
-            var UserSigin = new UserDto()
+            var UserSignIn = new UserDto()
             {
-                DispalyName = user.DisplayName,
+                FullName = user.FullName,
                 Email = user.Email,
-                Token = ""
+                Token = await _auth.CreateToken(user, _userManager)
             };
 
-            return Ok(UserSigin);
+            return Ok(UserSignIn);
 
         }
 

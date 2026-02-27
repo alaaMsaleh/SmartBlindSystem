@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 namespace BlindSystem.Domain.Entities
 {
     //non Generic 
-    public class ApplicationUser : IdentityUser
+    public class ApplicationUser : IdentityUser<Guid>
     {
         //User Base information
         public string FullName { get; set; } = null!;
