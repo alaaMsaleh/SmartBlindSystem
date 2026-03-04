@@ -93,7 +93,7 @@ namespace Smart_Blind_System
                 }); ;
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseAuthorization();
 
