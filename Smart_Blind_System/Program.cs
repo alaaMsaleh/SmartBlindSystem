@@ -91,6 +91,7 @@ namespace Smart_Blind_System
                     options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
                     options.RoutePrefix = string.Empty;
                 }); ;
+                app.MapGet("/", () => Results.Redirect("/swagger"));
             }
 
             //app.UseHttpsRedirection();
