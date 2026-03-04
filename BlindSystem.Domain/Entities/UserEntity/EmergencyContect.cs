@@ -1,9 +1,9 @@
 ﻿namespace BlindSystem.Domain.Entities.UserEntity
 {
-    public class EmergencyContect
+    public class EmergencyContect : BaseEntity
     {
-        public Guid Id { get; set; }
-        public string UserId { get; set; }
+
+        public Guid UserId { get; set; }
 
         public string Name { get; set; }
 

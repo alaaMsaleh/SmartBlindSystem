@@ -1,8 +1,7 @@
 ﻿using BlindSystem.Domain.Entities;
-using BlindSystem.Domain.Entities.UserEntity;
+using BlindSystem.Domain.Entities.UserEntity; // تأكدي من المسار ده عندك
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
 
 namespace BlindSystem.Infrastructure.Configuration
 {
@@ -10,14 +9,10 @@ namespace BlindSystem.Infrastructure.Configuration
     {
         public void Configure(EntityTypeBuilder<ApplicationUser> builder)
         {
-            //at Attributes
-            builder.HasKey(u => u.Id);
 
             builder.Property(u => u.FullName)
                 .HasMaxLength(100)
                 .IsRequired();
-
-            //Relation  at Entity
 
 
             builder.HasOne(u => u.MedicalProfile)
@@ -28,13 +23,12 @@ namespace BlindSystem.Infrastructure.Configuration
                 .WithOne(e => e.user)
                 .HasForeignKey(e => e.UserId);
 
-
             builder.HasMany(u => u.faceProfiles)
-             .WithOne(e => e.User)
-             .HasForeignKey(e => e.UserId);
-
-
-
+                 .WithOne(e => e.User)
+                 .HasForeignKey(e => e.UserId);
         }
     }
 }
+
+
+

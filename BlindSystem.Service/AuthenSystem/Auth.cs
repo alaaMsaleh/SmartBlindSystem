@@ -24,9 +24,10 @@ namespace BlindSystem.Service.AuthenSystem
             //create Claims 
             var AuthClaim = new List<Claim>()
             {
-                new Claim(ClaimTypes.NameIdentifier, user.Id),
-                new Claim(ClaimTypes.Name, user.DisplayName),
-                new Claim(ClaimTypes.Email,user.Email)
+
+              new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Name, user.DisplayName ?? ""),
+            new Claim(ClaimTypes.Email, user.Email ?? "")
             };
 
             var userRole = await userManager.GetRolesAsync(user);

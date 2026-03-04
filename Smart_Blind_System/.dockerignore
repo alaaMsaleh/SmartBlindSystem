@@ -1,0 +1,6 @@
+﻿.vs/
+bin/
+obj/
+Smart_Blind_System.sln
+.git/
+*.user

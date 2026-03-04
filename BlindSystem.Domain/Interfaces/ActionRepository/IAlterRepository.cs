@@ -2,7 +2,7 @@
 {
     public interface IAlterRepository
     {
-        Task GetAlter(int userId, alter)
+
 
     }
 }

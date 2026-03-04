@@ -1,7 +1,9 @@
 
 
 using BlindSystem.Domain.Entities;
+using BlindSystem.Domain.Interfaces;
 using BlindSystem.Infrastructure.Data.DBContext;
+using BlindSystem.Infrastructure.Repositories;
 using BlindSystem.Service.AuthenSystem;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -27,12 +29,14 @@ namespace Smart_Blind_System
 
             builder.Services.AddScoped(typeof(IAuth), typeof(Auth));
 
+            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 
-            builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-              .AddEntityFrameworkStores<BlindSystemDbContext>()
-              .AddDefaultTokenProviders();
 
+
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole<Guid>>()
+      .AddEntityFrameworkStores<BlindSystemDbContext>()
+      .AddDefaultTokenProviders();
 
             //Add JWT Setting
             builder.Services.AddAuthentication(options =>

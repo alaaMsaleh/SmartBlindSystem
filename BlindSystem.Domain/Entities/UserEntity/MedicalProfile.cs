@@ -1,8 +1,8 @@
 ﻿namespace BlindSystem.Domain.Entities.UserEntity
 {
-    public class MedicalProfile
+    public class MedicalProfile : BaseEntity
     {
-        public Guid Id { get; set; }
+
 
         public string BoodType { get; set; } = string.Empty;
         public string Allergies { get; set; } = string.Empty;
@@ -13,7 +13,7 @@
 
         public string DrPhone { get; set; } = string.Empty;
 
-        public string UserId { get; set; }
+        public Guid UserId { get; set; }
         public ApplicationUser User { get; set; } //Navigation Property
     }
 }

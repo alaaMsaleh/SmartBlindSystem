@@ -1,4 +1,5 @@
-﻿using BlindSystem.Domain.Entities.UserEntity;
+﻿using BlindSystem.Domain.Entities.ActionEntity;
+using BlindSystem.Domain.Entities.UserEntity;
 using Microsoft.AspNetCore.Identity;
 
 namespace BlindSystem.Domain.Entities
@@ -30,6 +31,7 @@ namespace BlindSystem.Domain.Entities
 
         public virtual ICollection<FaceProfile> faceProfiles { get; set; } = new List<FaceProfile>();
 
+        public virtual ICollection<Alert> Alerts { get; set; } = new List<Alert>();
 
     }
 }

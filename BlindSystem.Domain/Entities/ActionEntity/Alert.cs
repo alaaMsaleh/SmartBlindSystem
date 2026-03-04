@@ -3,10 +3,10 @@ using BlindSystem.Domain.Entities.UserEntity;
 
 namespace BlindSystem.Domain.Entities.ActionEntity
 {
-    public class Alert
+    public class Alert : BaseEntity
     {
-        public Guid Id { get; set; }
-        public string UserId { get; set; }
+
+        public Guid UserId { get; set; }
         public Guid DeviceId { get; set; }
         public string AlertType { get; set; } = string.Empty;
         public string Description { get; set; }
@@ -17,9 +17,11 @@ namespace BlindSystem.Domain.Entities.ActionEntity
 
         public GeoLocation Location { get; set; }
 
-        public virtual ApplicationUser user { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
         public virtual Device Device { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
 
         //public virtual EmergencyContect EmergancyContacts { get; set; } => not need Emergancy here becouse there relation between Alert and User
     }
