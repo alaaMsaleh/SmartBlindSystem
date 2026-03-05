@@ -1,4 +1,4 @@
-
+﻿
 
 using BlindSystem.Domain.Entities;
 using BlindSystem.Domain.Interfaces;
@@ -90,8 +90,17 @@ namespace Smart_Blind_System
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
+
+
                 app.UseSwagger();
-                app.UseSwaggerUI(); ;
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "V1");
+                    c.RoutePrefix = string.Empty;
+                });
+
+
+                app.MapGet("/test", () => "The API is alive and running!");
 
             }
 
