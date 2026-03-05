@@ -23,6 +23,7 @@ namespace Smart_Blind_System
 
             var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
             builder.WebHost.UseUrls($"http://*:{port}");
+            builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
 
             // Add services to the container.
 
@@ -91,7 +92,7 @@ namespace Smart_Blind_System
             {
                 app.UseSwagger();
                 app.UseSwaggerUI(); ;
-                app.MapGet("/", () => Results.Redirect("/swagger"));
+
             }
 
             //app.UseHttpsRedirection();
