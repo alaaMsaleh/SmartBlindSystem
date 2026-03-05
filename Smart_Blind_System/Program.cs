@@ -18,7 +18,11 @@ namespace Smart_Blind_System
     {
         public static void Main(string[] args)
         {
+
             var builder = WebApplication.CreateBuilder(args);
+
+            var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+            builder.WebHost.UseUrls($"http://*:{port}");
 
             // Add services to the container.
 
@@ -75,7 +79,7 @@ namespace Smart_Blind_System
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
 
-            //Identity DataBase 
+
 
 
             #endregion
@@ -86,11 +90,7 @@ namespace Smart_Blind_System
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
-                app.UseSwaggerUI(options =>
-                {
-                    options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-                    options.RoutePrefix = string.Empty;
-                }); ;
+                app.UseSwaggerUI(); ;
                 app.MapGet("/", () => Results.Redirect("/swagger"));
             }
 
