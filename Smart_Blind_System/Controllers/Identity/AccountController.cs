@@ -21,6 +21,9 @@ namespace Smart_Blind_System.API.Controllers.Identity
             _auth = auth;
         }
 
+        [HttpGet("/")]
+        public IActionResult GetRoot() => Ok("App is running!");
+
         //Create Registeration
         [HttpPost("register")]
 
