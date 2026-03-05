@@ -20,6 +20,8 @@ namespace Smart_Blind_System
         {
 
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
 
             var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
             builder.WebHost.UseUrls($"http://*:{port}");
@@ -88,20 +90,17 @@ namespace Smart_Blind_System
 
             #region Configure_MiddelWare
             // Configure the HTTP request pipeline.
+            // استخدم Swagger
             if (app.Environment.IsDevelopment())
             {
-
-
                 app.UseSwagger();
-                app.UseSwaggerUI(c =>
-                {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "V1");
-                    c.RoutePrefix = string.Empty;
-                });
-
-
-                app.MapGet("/test", () => "The API is alive and running!");
-
+                app.UseSwaggerUI();  // ده هيفتح الـ UI في /swagger
+            }
+            else
+            {
+                // لو عايزة في Production كمان (مش ضروري، بس لو عايزة)
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
 
             //app.UseHttpsRedirection();
