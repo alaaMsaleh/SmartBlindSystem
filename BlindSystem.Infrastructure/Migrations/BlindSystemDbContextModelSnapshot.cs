@@ -102,7 +102,6 @@ namespace BlindSystem.Infrastructure.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Gender")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeviceActive")
@@ -300,10 +299,6 @@ namespace BlindSystem.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Medications")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Notes")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -317,6 +312,42 @@ namespace BlindSystem.Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("MedicalProfile");
+                });
+
+            modelBuilder.Entity("BlindSystem.Domain.Entities.UserEntity.Medication", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Dosage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("MedicalProfileId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Schedule")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MedicalProfileId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Medications");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>
@@ -579,6 +610,22 @@ namespace BlindSystem.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("BlindSystem.Domain.Entities.UserEntity.Medication", b =>
+                {
+                    b.HasOne("BlindSystem.Domain.Entities.UserEntity.MedicalProfile", null)
+                        .WithMany("Medications")
+                        .HasForeignKey("MedicalProfileId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("BlindSystem.Domain.Entities.ApplicationUser", "User")
+                        .WithMany("Medications")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", null)
@@ -639,12 +686,19 @@ namespace BlindSystem.Infrastructure.Migrations
                     b.Navigation("MedicalProfile")
                         .IsRequired();
 
+                    b.Navigation("Medications");
+
                     b.Navigation("faceProfiles");
                 });
 
             modelBuilder.Entity("BlindSystem.Domain.Entities.DevicesEntities.Device", b =>
                 {
                     b.Navigation("Alerts");
+                });
+
+            modelBuilder.Entity("BlindSystem.Domain.Entities.UserEntity.MedicalProfile", b =>
+                {
+                    b.Navigation("Medications");
                 });
 #pragma warning restore 612, 618
         }

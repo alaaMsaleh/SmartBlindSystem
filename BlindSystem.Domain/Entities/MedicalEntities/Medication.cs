@@ -1,0 +1,15 @@
+﻿namespace BlindSystem.Domain.Entities.MedicalEntity
+{
+    public class Medication
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public string Dosage { get; set; }
+
+        public List<DateTime> Schedule { get; set; }
+        public Guid UserId { get; set; }
+        public ApplicationUser User { get; set; }
+
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    }
+}

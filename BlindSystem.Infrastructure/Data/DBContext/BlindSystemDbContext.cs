@@ -1,6 +1,8 @@
 ﻿using BlindSystem.Domain.Entities;
 using BlindSystem.Domain.Entities.ActionEntity;
 using BlindSystem.Domain.Entities.DevicesEntities;
+using BlindSystem.Domain.Entities.MedicalEntities;
+using BlindSystem.Domain.Entities.MedicalEntity;
 using BlindSystem.Domain.Entities.UserEntity;
 using BlindSystem.Infrastructure.Configuration;
 using Microsoft.AspNetCore.Identity;
@@ -32,8 +34,7 @@ namespace BlindSystem.Infrastructure.Data.DBContext
 
 
 
-            // الكود الجوكر: بيلف على كل العلاقات في الداتا بيز ويخليها NoAction 
-            // عشان يحل مشكلة الـ Multiple Cascade Paths للأبد
+
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
             {
                 relationship.DeleteBehavior = DeleteBehavior.NoAction;
@@ -47,6 +48,11 @@ namespace BlindSystem.Infrastructure.Data.DBContext
         public DbSet<SmartGlass> SmartGlass { get; set; }
         public DbSet<SmartStick> SmartStick { get; set; }
         public DbSet<Alert> Alerts { get; set; }
+        public DbSet<Medication> Medications { get; set; }
+        public DbSet<MedicalProfile> MedicalProfiles { get; set; }
+        public DbSet<Allergy> Allergies { get; set; }
+        public DbSet<ChronicDisease> ChronicDiseases { get; set; }
+        public DbSet<MedicalHistoryEntry> MedicalHistoryEntries { get; set; }
 
 
     }

@@ -10,11 +10,7 @@ namespace Smart_Blind_System.API.DTOs.IdentityUser
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
-        public string PhoneNumber { get; set; }
 
-        [Required]
-        public string Gender { get; set; }
 
         [Required]
         [StringLength(20, MinimumLength = 8, ErrorMessage = "Password must be between 8 and 20 characters.")]

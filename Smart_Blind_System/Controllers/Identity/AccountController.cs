@@ -25,7 +25,7 @@ namespace Smart_Blind_System.API.Controllers.Identity
         public IActionResult GetRoot() => Ok("App is running!");
 
         //Create Registeration
-        [HttpPost("register")]
+        [HttpPost("CreateNewAccount")]
 
         public async Task<ActionResult<UserDto>> Registration(RegistrationDto userDto)
         {
@@ -55,8 +55,7 @@ namespace Smart_Blind_System.API.Controllers.Identity
                 DisplayName = userDto.FullName,
                 Email = userDto.Email,
                 UserName = userDto.Email.Split("@")[0],
-                PhoneNumber = userDto.PhoneNumber,
-                Gender = userDto.Gender
+
 
 
             };
@@ -101,6 +100,8 @@ namespace Smart_Blind_System.API.Controllers.Identity
             return Ok(UserSignIn);
 
         }
+
+
 
     }
 }

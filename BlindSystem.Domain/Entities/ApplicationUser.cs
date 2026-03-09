@@ -1,4 +1,5 @@
 ﻿using BlindSystem.Domain.Entities.ActionEntity;
+using BlindSystem.Domain.Entities.MedicalEntity;
 using BlindSystem.Domain.Entities.UserEntity;
 using Microsoft.AspNetCore.Identity;
 
@@ -13,7 +14,7 @@ namespace BlindSystem.Domain.Entities
         public string? RefreshToken { get; set; } = null!;
 
         public DateTime BirthDate { get; set; }
-        public string Gender { get; set; } = null!;
+        public string? Gender { get; set; } = null!;
         public string? UserImage { get; set; }
 
 
@@ -27,11 +28,13 @@ namespace BlindSystem.Domain.Entities
 
         public virtual MedicalProfile MedicalProfile { get; set; }
 
+
         public virtual ICollection<EmergencyContect> EmergencyContects { get; set; } = new List<EmergencyContect>();
 
         public virtual ICollection<FaceProfile> faceProfiles { get; set; } = new List<FaceProfile>();
 
         public virtual ICollection<Alert> Alerts { get; set; } = new List<Alert>();
+        public virtual ICollection<Medication> Medications { get; set; } = new List<Medication>();
 
     }
 }

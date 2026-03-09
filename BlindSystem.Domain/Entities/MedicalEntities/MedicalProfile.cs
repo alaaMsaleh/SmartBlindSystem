@@ -1,4 +1,4 @@
-﻿namespace BlindSystem.Domain.Entities.UserEntity
+﻿namespace BlindSystem.Domain.Entities.MedicalEntity
 {
     public class MedicalProfile : BaseEntity
     {
@@ -7,7 +7,7 @@
         public string BoodType { get; set; } = string.Empty;
         public string Allergies { get; set; } = string.Empty;
 
-        public string Medications { get; set; } = string.Empty;
+
 
         public string Notes { get; set; } = string.Empty;
 
@@ -15,5 +15,7 @@
 
         public Guid UserId { get; set; }
         public ApplicationUser User { get; set; } //Navigation Property
+
+        public ICollection<Medication> Medications { get; set; } = new List<Medication>();
     }
 }

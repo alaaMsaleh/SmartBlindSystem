@@ -1,5 +1,5 @@
 ﻿using BlindSystem.Domain.Entities;
-using BlindSystem.Domain.Entities.UserEntity; // تأكدي من المسار ده عندك
+using BlindSystem.Domain.Entities.MedicalEntity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
