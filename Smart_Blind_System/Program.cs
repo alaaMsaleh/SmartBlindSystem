@@ -89,16 +89,15 @@ namespace Smart_Blind_System
             var app = builder.Build();
 
             #region Configure_MiddelWare
-            // Configure the HTTP request pipeline.
-            // استخدم Swagger
+
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
-                app.UseSwaggerUI();  // ده هيفتح الـ UI في /swagger
+                app.UseSwaggerUI();
             }
             else
             {
-                // لو عايزة في Production كمان (مش ضروري، بس لو عايزة)
+
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }

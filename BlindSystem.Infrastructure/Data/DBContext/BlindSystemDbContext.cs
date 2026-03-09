@@ -47,6 +47,7 @@ namespace BlindSystem.Infrastructure.Data.DBContext
         public DbSet<SmartGlass> SmartGlass { get; set; }
         public DbSet<SmartStick> SmartStick { get; set; }
         public DbSet<Alert> Alerts { get; set; }
+        public DbSet<Medication> Medications { get; set; }
 
 
     }

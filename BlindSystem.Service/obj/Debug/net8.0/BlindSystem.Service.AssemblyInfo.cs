@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BlindSystem.Service")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8bbac38b72a42a0a1650745d8960964e38e1a6dd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+856ea01ecbf8570c887fff29b9a70ff7450e92c1")]
 [assembly: System.Reflection.AssemblyProductAttribute("BlindSystem.Service")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BlindSystem.Service")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -4,6 +4,7 @@ using BlindSystem.Infrastructure.Data.DBContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlindSystem.Infrastructure.Migrations
 {
     [DbContext(typeof(BlindSystemDbContext))]
-    partial class BlindSystemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260309043725_addMedicationTable")]
+    partial class addMedicationTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
