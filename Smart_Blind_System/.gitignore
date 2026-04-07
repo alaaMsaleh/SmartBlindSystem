@@ -13,3 +13,8 @@ obj/
 *.user
 *.sln
 .git/
+bin/
+obj/
+*.dll
+*.exe
+*.pdb

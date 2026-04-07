@@ -11,4 +11,4 @@
         public MedicalProfile MedicalProfile { get; set; } = null!;
     }
 }
-}
+
