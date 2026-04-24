@@ -214,6 +214,159 @@ namespace BlindSystem.Infrastructure.Migrations
                     b.UseTphMappingStrategy();
                 });
 
+            modelBuilder.Entity("BlindSystem.Domain.Entities.MedicalEntities.Allergy", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("MedicalProfileId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Reaction")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Severity")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MedicalProfileId");
+
+                    b.ToTable("Allergies");
+                });
+
+            modelBuilder.Entity("BlindSystem.Domain.Entities.MedicalEntities.ChronicDisease", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DiagnosedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("MedicalProfileId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MedicalProfileId");
+
+                    b.ToTable("ChronicDiseases");
+                });
+
+            modelBuilder.Entity("BlindSystem.Domain.Entities.MedicalEntity.MedicalHistoryEntry", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DoctorName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("EventDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("MedicalProfileId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MedicalProfileId");
+
+                    b.ToTable("MedicalHistoryEntries");
+                });
+
+            modelBuilder.Entity("BlindSystem.Domain.Entities.MedicalEntity.MedicalProfile", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("BloodType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DrPhone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float?>("Height")
+                        .HasColumnType("real");
+
+                    b.Property<string>("Notes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<float?>("Weight")
+                        .HasColumnType("real");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("MedicalProfile");
+                });
+
+            modelBuilder.Entity("BlindSystem.Domain.Entities.MedicalEntity.Medication", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Dosage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("MedicalProfileId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Schedule")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MedicalProfileId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Medications");
+                });
+
             modelBuilder.Entity("BlindSystem.Domain.Entities.UserEntity.EmergencyContect", b =>
                 {
                     b.Property<Guid>("Id")
@@ -279,75 +432,6 @@ namespace BlindSystem.Infrastructure.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("FacesProfile");
-                });
-
-            modelBuilder.Entity("BlindSystem.Domain.Entities.UserEntity.MedicalProfile", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Allergies")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BoodType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DrPhone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Notes")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("MedicalProfile");
-                });
-
-            modelBuilder.Entity("BlindSystem.Domain.Entities.UserEntity.Medication", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Dosage")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid?>("MedicalProfileId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Schedule")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MedicalProfileId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Medications");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>
@@ -577,6 +661,66 @@ namespace BlindSystem.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("BlindSystem.Domain.Entities.MedicalEntities.Allergy", b =>
+                {
+                    b.HasOne("BlindSystem.Domain.Entities.MedicalEntity.MedicalProfile", "MedicalProfile")
+                        .WithMany("Allergies")
+                        .HasForeignKey("MedicalProfileId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("MedicalProfile");
+                });
+
+            modelBuilder.Entity("BlindSystem.Domain.Entities.MedicalEntities.ChronicDisease", b =>
+                {
+                    b.HasOne("BlindSystem.Domain.Entities.MedicalEntity.MedicalProfile", "MedicalProfile")
+                        .WithMany("ChronicDiseases")
+                        .HasForeignKey("MedicalProfileId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("MedicalProfile");
+                });
+
+            modelBuilder.Entity("BlindSystem.Domain.Entities.MedicalEntity.MedicalHistoryEntry", b =>
+                {
+                    b.HasOne("BlindSystem.Domain.Entities.MedicalEntity.MedicalProfile", "MedicalProfile")
+                        .WithMany("HistoryEntries")
+                        .HasForeignKey("MedicalProfileId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("MedicalProfile");
+                });
+
+            modelBuilder.Entity("BlindSystem.Domain.Entities.MedicalEntity.MedicalProfile", b =>
+                {
+                    b.HasOne("BlindSystem.Domain.Entities.ApplicationUser", "User")
+                        .WithOne("MedicalProfile")
+                        .HasForeignKey("BlindSystem.Domain.Entities.MedicalEntity.MedicalProfile", "UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BlindSystem.Domain.Entities.MedicalEntity.Medication", b =>
+                {
+                    b.HasOne("BlindSystem.Domain.Entities.MedicalEntity.MedicalProfile", null)
+                        .WithMany("Medications")
+                        .HasForeignKey("MedicalProfileId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("BlindSystem.Domain.Entities.ApplicationUser", "User")
+                        .WithMany("Medications")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("BlindSystem.Domain.Entities.UserEntity.EmergencyContect", b =>
                 {
                     b.HasOne("BlindSystem.Domain.Entities.ApplicationUser", "user")
@@ -592,33 +736,6 @@ namespace BlindSystem.Infrastructure.Migrations
                 {
                     b.HasOne("BlindSystem.Domain.Entities.ApplicationUser", "User")
                         .WithMany("faceProfiles")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("BlindSystem.Domain.Entities.UserEntity.MedicalProfile", b =>
-                {
-                    b.HasOne("BlindSystem.Domain.Entities.ApplicationUser", "User")
-                        .WithOne("MedicalProfile")
-                        .HasForeignKey("BlindSystem.Domain.Entities.UserEntity.MedicalProfile", "UserId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("BlindSystem.Domain.Entities.UserEntity.Medication", b =>
-                {
-                    b.HasOne("BlindSystem.Domain.Entities.UserEntity.MedicalProfile", null)
-                        .WithMany("Medications")
-                        .HasForeignKey("MedicalProfileId")
-                        .OnDelete(DeleteBehavior.NoAction);
-
-                    b.HasOne("BlindSystem.Domain.Entities.ApplicationUser", "User")
-                        .WithMany("Medications")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
@@ -696,8 +813,14 @@ namespace BlindSystem.Infrastructure.Migrations
                     b.Navigation("Alerts");
                 });
 
-            modelBuilder.Entity("BlindSystem.Domain.Entities.UserEntity.MedicalProfile", b =>
+            modelBuilder.Entity("BlindSystem.Domain.Entities.MedicalEntity.MedicalProfile", b =>
                 {
+                    b.Navigation("Allergies");
+
+                    b.Navigation("ChronicDiseases");
+
+                    b.Navigation("HistoryEntries");
+
                     b.Navigation("Medications");
                 });
 #pragma warning restore 612, 618

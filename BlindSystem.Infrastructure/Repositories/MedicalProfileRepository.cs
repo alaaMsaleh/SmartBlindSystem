@@ -1,0 +1,4 @@
+﻿namespace BlindSystem.Infrastructure.Repositories
+{
+
+}

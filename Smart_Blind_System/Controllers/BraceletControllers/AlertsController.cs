@@ -6,9 +6,7 @@ using Smart_Blind_System.API.DTOs.BraceletDtos;
 
 namespace Smart_Blind_System.API.Controllers.BraceletControllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AlertsController : ControllerBase
+    public class AlertsController : BaseController
     {
 
         private readonly BlindSystemDbContext _dbContext;

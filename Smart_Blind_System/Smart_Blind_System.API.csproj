@@ -4,9 +4,33 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-	</PropertyGroup>
+	  <UserSecretsId>4d52ce6c-a7ed-41fc-b232-a8df749f777c</UserSecretsId>
+  </PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Extensions\**" />
+	  <Compile Remove="Helpers\**" />
+	  <Compile Remove="Middleware\**" />
+	  <Compile Remove="wwwroot\**" />
+	  <Content Remove="Extensions\**" />
+	  <Content Remove="Helpers\**" />
+	  <Content Remove="Middleware\**" />
+	  <Content Remove="wwwroot\**" />
+	  <EmbeddedResource Remove="Extensions\**" />
+	  <EmbeddedResource Remove="Helpers\**" />
+	  <EmbeddedResource Remove="Middleware\**" />
+	  <EmbeddedResource Remove="wwwroot\**" />
+	  <None Remove="Extensions\**" />
+	  <None Remove="Helpers\**" />
+	  <None Remove="Middleware\**" />
+	  <None Remove="wwwroot\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="16.1.1" />
+		<PackageReference Include="Google.Apis.Auth" Version="1.70.0" />
+		<PackageReference Include="Mailkit" Version="4.16.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="8.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.21" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.20">
 			<PrivateAssets>all</PrivateAssets>
@@ -14,14 +38,6 @@
 		</PackageReference>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.20" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="Extensions\" />
-		<Folder Include="Middleware\" />
-		<Folder Include="Error\" />
-		<Folder Include="Helpers\" />
-		<Folder Include="wwwroot\" />
 	</ItemGroup>
 
 	<ItemGroup>

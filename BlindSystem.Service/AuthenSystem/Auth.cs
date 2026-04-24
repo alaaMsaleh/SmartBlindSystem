@@ -43,7 +43,7 @@ namespace BlindSystem.Service.AuthenSystem
                 issuer: _configuration["JWT:Issure"],
                 audience: _configuration["JWT:ValiedAudience"],
                 claims: AuthClaim,
-                expires: DateTime.Now.AddMinutes(double.Parse(_configuration["JWT:DurationInMintes"])),
+                expires: DateTime.Now.AddMinutes(double.Parse(_configuration["JWT:DurationInDays"])),
                 signingCredentials: signingCredentials
             );
 
