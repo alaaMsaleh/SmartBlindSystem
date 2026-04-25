@@ -1,6 +1,8 @@
 ﻿using BlindSystem.Domain.Entities;
 using BlindSystem.Domain.Interfaces;
 using BlindSystem.Domain.Service_Contract;
+using BlindSystem.Domain.Service_Contract.MedicalProfileInterface;
+using BlindSystem.Infrastructure;
 using BlindSystem.Infrastructure.Data.DBContext;
 using BlindSystem.Infrastructure.Repositories;
 using BlindSystem.Service.AuthenSystem;
@@ -11,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Smart_Blind_System.API.MailService;
+using Smart_Blind_System.API.Mapping;
 using System.Text;
 
 
@@ -40,16 +43,15 @@ namespace Smart_Blind_System
 
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             builder.Services.AddTransient<IMailService, MailService>();
-
-
-
-
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            builder.Services.AddScoped<IMedicalProfileService, MedicalProfileService>();
+            builder.Services.AddAutoMapper(typeof(MedicalMappingProfile));
             builder.Services.AddIdentity<ApplicationUser, IdentityRole<Guid>>()
       .AddEntityFrameworkStores<BlindSystemDbContext>()
       .AddDefaultTokenProviders();
 
 
-            var durationStr = builder.Configuration["JWT:DurationInDays"] ?? "7";
+            var durationStr = builder.Configuration["JWT:DurationInDays"] ?? "30";
             var duration = double.Parse(durationStr);
 
             //Add JWT Setting
@@ -146,7 +148,7 @@ namespace Smart_Blind_System
 
             #region Configure_MiddelWare
 
-            // شيلنا الـ IF عشان يشتغل على السيرفر
+
             app.UseSwagger();
             app.UseSwaggerUI(options =>
             {

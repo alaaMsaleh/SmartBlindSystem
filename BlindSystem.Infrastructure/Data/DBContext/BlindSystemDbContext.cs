@@ -49,7 +49,7 @@ namespace BlindSystem.Infrastructure.Data.DBContext
         public DbSet<SmartStick> SmartStick { get; set; }
         public DbSet<Alert> Alerts { get; set; }
         public DbSet<Medication> Medications { get; set; }
-        public DbSet<MedicalProfile> MedicalProfiles { get; set; }
+
         public DbSet<Allergy> Allergies { get; set; }
         public DbSet<ChronicDisease> ChronicDiseases { get; set; }
         public DbSet<MedicalHistoryEntry> MedicalHistoryEntries { get; set; }

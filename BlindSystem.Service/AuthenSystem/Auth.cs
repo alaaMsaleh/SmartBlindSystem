@@ -40,8 +40,8 @@ namespace BlindSystem.Service.AuthenSystem
             var signingCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
 
             var token = new JwtSecurityToken(
-                issuer: _configuration["JWT:Issure"],
-                audience: _configuration["JWT:ValiedAudience"],
+                issuer: _configuration["JWT:Issuer"],
+                audience: _configuration["JWT:ValidAudience"],
                 claims: AuthClaim,
                 expires: DateTime.Now.AddMinutes(double.Parse(_configuration["JWT:DurationInDays"])),
                 signingCredentials: signingCredentials

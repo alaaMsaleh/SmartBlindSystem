@@ -8,6 +8,7 @@ namespace BlindSystem.Domain.Entities.MedicalEntities
         public string? Severity { get; set; }        // Mild / Moderate / Severe
         public string? Reaction { get; set; }
 
+
         public Guid MedicalProfileId { get; set; }
         public MedicalProfile MedicalProfile { get; set; } = null!;
     }
