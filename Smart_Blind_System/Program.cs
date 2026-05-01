@@ -104,7 +104,15 @@ namespace Smart_Blind_System
             //Default DataBase
             builder.Services.AddDbContext<BlindSystemDbContext>(options =>
         {
-            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+
+            options.UseSqlServer(
+                builder.Configuration.GetConnectionString("DefaultConnection"),
+                sqlOptions => sqlOptions.EnableRetryOnFailure(
+                    maxRetryCount: 5,
+                    maxRetryDelay: TimeSpan.FromSeconds(10),
+                    errorNumbersToAdd: null
+                )
+            );
         });
 
             builder.Services.Configure<DataProtectionTokenProviderOptions>(options =>
@@ -159,6 +167,22 @@ namespace Smart_Blind_System
             //app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseExceptionHandler(errorApp =>
+            {
+                errorApp.Run(async context =>
+                {
+                    var exception = context.Features.Get<Microsoft.AspNetCore.Diagnostics.IExceptionHandlerFeature>();
+                    context.Response.ContentType = "application/json";
+                    context.Response.StatusCode = 500;
+                    await context.Response.WriteAsJsonAsync(new
+                    {
+                        Error = exception?.Error?.Message,
+                        Detail = exception?.Error?.InnerException?.Message,
+                        StackTrace = exception?.Error?.StackTrace
+                    });
+                });
+            });
 
             #endregion
 

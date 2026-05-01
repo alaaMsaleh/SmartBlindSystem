@@ -59,7 +59,7 @@ namespace BlindSystem.Infrastructure.Repositories
             _dbContext.Set<T>().Update(entity);
         }
 
-        public async void Delete(Guid id)
+        public async Task DeleteAsync(Guid id)
         {
             var entity = await GetAsync(id);
             if (entity != null)

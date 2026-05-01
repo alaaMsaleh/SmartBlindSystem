@@ -302,13 +302,15 @@ namespace BlindSystem.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("BloodType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("BloodType")
+                        .HasColumnType("int");
 
                     b.Property<string>("DrPhone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
 
                     b.Property<float?>("Height")
                         .HasColumnType("real");
@@ -344,7 +346,7 @@ namespace BlindSystem.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("MedicalProfileId")
+                    b.Property<Guid>("MedicalProfileId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
@@ -355,14 +357,9 @@ namespace BlindSystem.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
                     b.HasIndex("MedicalProfileId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Medications");
                 });
@@ -707,18 +704,13 @@ namespace BlindSystem.Infrastructure.Migrations
 
             modelBuilder.Entity("BlindSystem.Domain.Entities.MedicalEntity.Medication", b =>
                 {
-                    b.HasOne("BlindSystem.Domain.Entities.MedicalEntity.MedicalProfile", null)
+                    b.HasOne("BlindSystem.Domain.Entities.MedicalEntity.MedicalProfile", "MedicalProfile")
                         .WithMany("Medications")
                         .HasForeignKey("MedicalProfileId")
-                        .OnDelete(DeleteBehavior.NoAction);
-
-                    b.HasOne("BlindSystem.Domain.Entities.ApplicationUser", "User")
-                        .WithMany("Medications")
-                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("MedicalProfile");
                 });
 
             modelBuilder.Entity("BlindSystem.Domain.Entities.UserEntity.EmergencyContect", b =>
@@ -802,8 +794,6 @@ namespace BlindSystem.Infrastructure.Migrations
 
                     b.Navigation("MedicalProfile")
                         .IsRequired();
-
-                    b.Navigation("Medications");
 
                     b.Navigation("faceProfiles");
                 });

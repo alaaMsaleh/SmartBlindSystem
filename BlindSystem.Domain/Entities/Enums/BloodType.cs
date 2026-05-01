@@ -4,28 +4,31 @@ namespace BlindSystem.Domain.Entities.Enums
 {
     public enum BloodType
     {
+        [Description("Unknown")]
+        None = 0,
+
         [Description("A+")]
         APositive = 1,
 
         [Description("A-")]
-        ANegative,
+        ANegative = 2,
 
         [Description("B+")]
-        BPositive,
+        BPositive = 3,
 
         [Description("B-")]
-        BNegative,
+        BNegative = 4,
 
         [Description("AB+")]
-        ABPositive,
+        ABPositive = 5,
 
         [Description("AB-")]
-        ABNegative,
+        ABNegative = 6,
 
         [Description("O+")]
-        OPositive,
+        OPositive = 7,
 
         [Description("O-")]
-        ONegative
+        ONegative = 8
     }
 }

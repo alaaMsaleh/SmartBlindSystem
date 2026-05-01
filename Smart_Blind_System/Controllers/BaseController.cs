@@ -14,7 +14,7 @@ namespace Smart_Blind_System.API.Controllers
             {
                 return userGuid;
             }
-            throw new UnauthorizedAccessException("Invalid User ID");
+            return Guid.Empty;
         }
     }
 }

@@ -84,6 +84,8 @@ namespace BlindSystem.Service.Services
 
             var profile = await _UnitOfWork.Repository<MedicalProfile>().GetEntityWithSpecAsync(new MedicalProfileWithDetailsSpec(userId));
             if (profile is null) return null;
+            Allergy.MedicalProfileId = profile.Id;
+            if (profile is null) return null;
             var newallergy = _UnitOfWork.Repository<Allergy>().Add(Allergy);
             var result = await _UnitOfWork.CompleteAsync(); return result > 0 ? newallergy : null;
 
@@ -146,7 +148,227 @@ namespace BlindSystem.Service.Services
 
             if (allergy is null) return false;
 
-            _UnitOfWork.Repository<Allergy>().Delete(allergy.Id);
+            await _UnitOfWork.Repository<Allergy>().DeleteAsync(allergy.Id);
+            var result = await _UnitOfWork.CompleteAsync();
+
+            return result > 0;
+        }
+
+
+        //// ChronicDisease
+
+        public async Task<ChronicDisease?> CreateChronicDisease(Guid userId, ChronicDisease? chronicDisease)
+        {
+            var user = await _userManager.FindByIdAsync(userId.ToString());
+            if (user is null) return null;
+
+            var profile = await _UnitOfWork.Repository<MedicalProfile>().GetEntityWithSpecAsync(new MedicalProfileWithDetailsSpec(userId));
+            if (profile is null) return null;
+
+            chronicDisease.MedicalProfileId = profile.Id;
+
+            var newDisease = _UnitOfWork.Repository<ChronicDisease>().Add(chronicDisease);
+            var result = await _UnitOfWork.CompleteAsync();
+            return result > 0 ? newDisease : null;
+        }
+
+        public async Task<IEnumerable<ChronicDisease>> GetChronicDiseases(Guid userId)
+        {
+            var profile = await _UnitOfWork.Repository<MedicalProfile>()
+                .GetEntityWithSpecAsync(new MedicalProfileWithDetailsSpec(userId));
+
+            if (profile is null) return Enumerable.Empty<ChronicDisease>();
+
+            var spec = new ChronicDiseaseByMedicalProfileIdSpec(profile.Id);
+
+            return await _UnitOfWork.Repository<ChronicDisease>()
+                .GetAllWithSpecAsync(spec);
+        }
+
+        public async Task<ChronicDisease?> UpdateChronicDisease(Guid userId, Guid diseaseId, ChronicDisease updated)
+        {
+            var profile = await _UnitOfWork.Repository<MedicalProfile>()
+                .GetEntityWithSpecAsync(new MedicalProfileWithDetailsSpec(userId));
+
+            if (profile is null) return null;
+
+            var spec = new ChronicDiseaseByIdSpec(diseaseId, profile.Id);
+            var existing = await _UnitOfWork.Repository<ChronicDisease>()
+                .GetEntityWithSpecAsync(spec);
+
+            if (existing is null) return null;
+
+            existing.Name = updated.Name;
+            existing.Description = updated.Description;
+            existing.DiagnosedDate = updated.DiagnosedDate;
+
+            _UnitOfWork.Repository<ChronicDisease>().Update(existing);
+            var result = await _UnitOfWork.CompleteAsync();
+
+            return result > 0 ? existing : null;
+        }
+
+        public async Task<bool> DeleteChronicDisease(Guid userId, Guid diseaseId)
+        {
+            var profile = await _UnitOfWork.Repository<MedicalProfile>()
+                .GetEntityWithSpecAsync(new MedicalProfileWithDetailsSpec(userId));
+
+            if (profile is null) return false;
+
+            var spec = new ChronicDiseaseByIdSpec(diseaseId, profile.Id);
+            var disease = await _UnitOfWork.Repository<ChronicDisease>()
+                .GetEntityWithSpecAsync(spec);
+
+            if (disease is null) return false;
+
+            await _UnitOfWork.Repository<ChronicDisease>().DeleteAsync(disease.Id);
+            var result = await _UnitOfWork.CompleteAsync();
+
+            return result > 0;
+        }
+
+
+        //// MedicalHistory
+
+        public async Task<MedicalHistoryEntry?> CreateMedicalHistoryEntry(Guid userId, MedicalHistoryEntry? entry)
+        {
+            var user = await _userManager.FindByIdAsync(userId.ToString());
+            if (user is null) return null;
+
+            var profile = await _UnitOfWork.Repository<MedicalProfile>().GetEntityWithSpecAsync(new MedicalProfileWithDetailsSpec(userId));
+            if (profile is null) return null;
+
+            entry.MedicalProfileId = profile.Id;
+
+            var newEntry = _UnitOfWork.Repository<MedicalHistoryEntry>().Add(entry);
+            var result = await _UnitOfWork.CompleteAsync();
+            return result > 0 ? newEntry : null;
+        }
+
+        public async Task<IEnumerable<MedicalHistoryEntry>> GetMedicalHistoryEntries(Guid userId)
+        {
+            var profile = await _UnitOfWork.Repository<MedicalProfile>()
+                .GetEntityWithSpecAsync(new MedicalProfileWithDetailsSpec(userId));
+
+            if (profile is null) return Enumerable.Empty<MedicalHistoryEntry>();
+
+            var spec = new MedicalHistoryByMedicalProfileIdSpec(profile.Id);
+
+            return await _UnitOfWork.Repository<MedicalHistoryEntry>()
+                .GetAllWithSpecAsync(spec);
+        }
+
+        public async Task<MedicalHistoryEntry?> UpdateMedicalHistoryEntry(Guid userId, Guid entryId, MedicalHistoryEntry updated)
+        {
+            var profile = await _UnitOfWork.Repository<MedicalProfile>()
+                .GetEntityWithSpecAsync(new MedicalProfileWithDetailsSpec(userId));
+
+            if (profile is null) return null;
+
+            var spec = new MedicalHistoryByIdSpec(entryId, profile.Id);
+            var existing = await _UnitOfWork.Repository<MedicalHistoryEntry>()
+                .GetEntityWithSpecAsync(spec);
+
+            if (existing is null) return null;
+
+            existing.Title = updated.Title;
+            existing.Description = updated.Description;
+            existing.EventDate = updated.EventDate;
+            existing.DoctorName = updated.DoctorName;
+
+            _UnitOfWork.Repository<MedicalHistoryEntry>().Update(existing);
+            var result = await _UnitOfWork.CompleteAsync();
+
+            return result > 0 ? existing : null;
+        }
+
+        public async Task<bool> DeleteMedicalHistoryEntry(Guid userId, Guid entryId)
+        {
+            var profile = await _UnitOfWork.Repository<MedicalProfile>()
+                .GetEntityWithSpecAsync(new MedicalProfileWithDetailsSpec(userId));
+
+            if (profile is null) return false;
+
+            var spec = new MedicalHistoryByIdSpec(entryId, profile.Id);
+            var entry = await _UnitOfWork.Repository<MedicalHistoryEntry>()
+                .GetEntityWithSpecAsync(spec);
+
+            if (entry is null) return false;
+
+            await _UnitOfWork.Repository<MedicalHistoryEntry>().DeleteAsync(entry.Id);
+            var result = await _UnitOfWork.CompleteAsync();
+
+            return result > 0;
+        }
+
+
+        //// Medication
+
+        public async Task<Medication?> CreateMedication(Guid userId, Medication? medication)
+        {
+            var user = await _userManager.FindByIdAsync(userId.ToString());
+            if (user is null) return null;
+
+            var profile = await _UnitOfWork.Repository<MedicalProfile>().GetEntityWithSpecAsync(new MedicalProfileWithDetailsSpec(userId));
+            if (profile is null) return null;
+
+            medication.MedicalProfileId = profile.Id;
+
+            var newMedication = _UnitOfWork.Repository<Medication>().Add(medication);
+            var result = await _UnitOfWork.CompleteAsync();
+            return result > 0 ? newMedication : null;
+        }
+
+        public async Task<IEnumerable<Medication>> GetMedications(Guid userId)
+        {
+            var profile = await _UnitOfWork.Repository<MedicalProfile>()
+                .GetEntityWithSpecAsync(new MedicalProfileWithDetailsSpec(userId));
+
+            if (profile is null) return Enumerable.Empty<Medication>();
+
+            var spec = new MedicationByMedicalProfileIdSpec(profile.Id);
+
+            return await _UnitOfWork.Repository<Medication>()
+                .GetAllWithSpecAsync(spec);
+        }
+
+        public async Task<Medication?> UpdateMedication(Guid userId, Guid medicationId, Medication updated)
+        {
+            var profile = await _UnitOfWork.Repository<MedicalProfile>()
+                .GetEntityWithSpecAsync(new MedicalProfileWithDetailsSpec(userId));
+
+            if (profile is null) return null;
+
+            var spec = new MedicationByIdSpec(medicationId, profile.Id);
+            var existing = await _UnitOfWork.Repository<Medication>()
+                .GetEntityWithSpecAsync(spec);
+
+            if (existing is null) return null;
+
+            existing.Name = updated.Name;
+            existing.Dosage = updated.Dosage;
+            existing.Schedule = updated.Schedule;
+
+            _UnitOfWork.Repository<Medication>().Update(existing);
+            var result = await _UnitOfWork.CompleteAsync();
+
+            return result > 0 ? existing : null;
+        }
+
+        public async Task<bool> DeleteMedication(Guid userId, Guid medicationId)
+        {
+            var profile = await _UnitOfWork.Repository<MedicalProfile>()
+                .GetEntityWithSpecAsync(new MedicalProfileWithDetailsSpec(userId));
+
+            if (profile is null) return false;
+
+            var spec = new MedicationByIdSpec(medicationId, profile.Id);
+            var medication = await _UnitOfWork.Repository<Medication>()
+                .GetEntityWithSpecAsync(spec);
+
+            if (medication is null) return false;
+
+            await _UnitOfWork.Repository<Medication>().DeleteAsync(medication.Id);
             var result = await _UnitOfWork.CompleteAsync();
 
             return result > 0;
@@ -156,3 +378,5 @@ namespace BlindSystem.Service.Services
 
     }
 }
+
+

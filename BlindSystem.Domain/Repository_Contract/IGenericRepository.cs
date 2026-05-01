@@ -13,7 +13,7 @@ namespace BlindSystem.Domain.Interfaces
 
         void Update(T entity);
 
-        void Delete(Guid id);
+        Task DeleteAsync(Guid id);
 
 
 

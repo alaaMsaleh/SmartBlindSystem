@@ -21,5 +21,31 @@ namespace BlindSystem.Domain.Service_Contract.MedicalProfileInterface
         Task<Allergy?> UpdateAllergy(Guid userId, Guid allergyId, Allergy updated);
         Task<bool> DeleteAllergy(Guid userId, Guid allergyId);
 
+        //ChronicDisease
+
+        Task<ChronicDisease?> CreateChronicDisease(Guid userId, ChronicDisease? chronicDisease);
+        Task<IEnumerable<ChronicDisease>> GetChronicDiseases(Guid userId);
+
+        Task<ChronicDisease?> UpdateChronicDisease(Guid userId, Guid diseaseId, ChronicDisease updated);
+        Task<bool> DeleteChronicDisease(Guid userId, Guid diseaseId);
+
+
+        //MedicalHistory
+
+        Task<MedicalHistoryEntry?> CreateMedicalHistoryEntry(Guid userId, MedicalHistoryEntry? entry);
+        Task<IEnumerable<MedicalHistoryEntry>> GetMedicalHistoryEntries(Guid userId);
+
+        Task<MedicalHistoryEntry?> UpdateMedicalHistoryEntry(Guid userId, Guid entryId, MedicalHistoryEntry updated);
+        Task<bool> DeleteMedicalHistoryEntry(Guid userId, Guid entryId);
+
+
+        //Medication
+
+        Task<Medication?> CreateMedication(Guid userId, Medication? medication);
+        Task<IEnumerable<Medication>> GetMedications(Guid userId);
+
+        Task<Medication?> UpdateMedication(Guid userId, Guid medicationId, Medication updated);
+        Task<bool> DeleteMedication(Guid userId, Guid medicationId);
+
     }
 }
